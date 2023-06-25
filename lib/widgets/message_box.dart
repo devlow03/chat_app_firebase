@@ -16,18 +16,18 @@ class _MessageBoxState extends State<MessageBox> {
       mainAxisAlignment: widget.isMe?MainAxisAlignment.end:MainAxisAlignment.start,
       children: [
         Container(
-            padding: EdgeInsets.all(16),
-            margin: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
+            // margin: EdgeInsets.all(16),a
             // width: MediaQuery.of(context).size.width *.5,
-            constraints: BoxConstraints(maxWidth: 200),
+            // constraints: BoxConstraints(maxWidth: 200),
             decoration: BoxDecoration(
-                color: widget.isMe?Color(0xff3D4354):Color(0xff7A8194),
-                borderRadius: BorderRadius.circular(15)
+                color: widget.isMe?Color.fromARGB(255, 80, 149, 204):Colors.grey.shade200,
+                borderRadius: BorderRadius.circular(30)
             ),
             child: Text(
               widget.message,
-              style: TextStyle(
-                  color: Colors.white
+              style:  TextStyle(
+                  color: widget.isMe?Colors.white:Colors.black
               ),
             )),
       ],

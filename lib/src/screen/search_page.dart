@@ -41,55 +41,64 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff292F3F),
+      backgroundColor: Colors.white,
+      // backgroundColor: const Color(0xff292F3F),
     appBar: AppBar(
+      automaticallyImplyLeading: false,
       elevation: 0,
-      backgroundColor: const Color(0xff292F3F),
-      leading: IconButton(
-        icon: const Icon(Icons.arrow_back_ios),
+      backgroundColor: Colors.white,
+      // backgroundColor: const Color(0xff292F3F),
+      actions: [
+        TextButton(
+        child: Text('Hủy bỏ',
+        
+        style: TextStyle(color: Colors.blue),
+        ),
         onPressed: () {
           Get.back();
         },
       ),
+      ],
       title: TextField(
-        onSubmitted: (value){
-          onSearch();
-        },
-        textInputAction: TextInputAction.search,
-        style: TextStyle(
-          color: Colors.white
-        ),
-        controller: searchControl,
-        decoration: InputDecoration(
-
-          contentPadding: EdgeInsets.all(10),
-            hintStyle: TextStyle(
-              color: Colors.white
+              controller: searchControl,
+              maxLines: 1,
+              onSubmitted: (value){
+                onSearch();
+              },
+              onTap: (){
+                Get.to(SearchPage(widget.user));
+              },
+              textInputAction: TextInputAction.search,
+              
+              style: TextStyle(color: Colors.black),
+              decoration: InputDecoration(
+                  contentPadding: EdgeInsets.all(10),
+                  hintStyle: TextStyle(color: Colors.grey.shade400),
+                  fillColor: Colors.blueGrey.shade50,
+                  filled: true,
+                  hintText: "Tìm kiếm",
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide(color: Colors.transparent, width: 0)),
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide:
+                          BorderSide(color: Colors.transparent, width: 0)),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.transparent, width: 0),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  suffixIcon: Icon(
+                    Icons.search,
+                    color: Colors.grey.shade400,
+                  )),
             ),
-            fillColor: Color(0xff1B202D),
-            filled: true,
-            hintText: "Tìm kiếm",
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(5),
-                borderSide: BorderSide(
-                  color: Colors.black
-                )
-            ),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(5),
-              borderSide: BorderSide(
-                  color: Colors.black
-              )
-          ),
-          suffixIcon: Icon(Icons.search,color: Colors.white,)
-        ),
-
-
-      ),
+      
+      
     ),
-      body: Column(
+      body: ListView(
         children: [
-
+          SizedBox(height: 20,),
           if(searchResult.length>0)
             Expanded(
               child: ListView.separated(
@@ -115,17 +124,17 @@ class _SearchPageState extends State<SearchPage> {
                     ),
                     title: Text(searchResult[index]['name'],
                     style: TextStyle(
-                      color: Colors.white
+                      color: Colors.black
                     ),
                     ),
                     subtitle: Text(searchResult[index]['email'],
                       style: TextStyle(
-                          color: Colors.white
+                          color: Colors.black
                         ),
                     ),
                     trailing: Icon(
                      Icons.message,
-                      color: Colors.white,
+                      color: Colors.black,
                       ),
 
 
